@@ -7,6 +7,12 @@ class MyStyle {
         width: 10,
         height: 15,
       );
+  Widget showProgress() {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
   Text showTitle(String title) => Text(
         title,
         style: TextStyle(

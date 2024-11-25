@@ -101,22 +101,32 @@ class _SiginState extends State<Sigin> {
               } else if (chooseType == 'Rider') {
                 routeTuservice(MainRider(), userModel);
               } else {
-                mormailDiarlog(context, 'Error: Unknown user type');
+                if (mounted) {
+                  mormailDiarlog(context, 'Error: Unknown user type');
+                }
               }
             } else {
-              mormailDiarlog(context, 'Incorrect password');
+              if (mounted) {
+                mormailDiarlog(context, 'Incorrect password');
+              }
             }
           }
         } else {
-          mormailDiarlog(context, 'No user found');
+          if (mounted) {
+            mormailDiarlog(context, 'No user found');
+          }
         }
       } else {
-        mormailDiarlog(context,
-            'Error: Server responded with status ${response.statusCode}');
+        if (mounted) {
+          mormailDiarlog(context,
+              'Error: Server responded with status ${response.statusCode}');
+        }
       }
     } catch (e) {
       print('Error: $e');
-      mormailDiarlog(context, 'Cannot connect to the server');
+      if (mounted) {
+        mormailDiarlog(context, 'Cannot connect to the server');
+      }
     }
   }
 
